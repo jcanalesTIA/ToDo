@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { CommentModel } from '../models/comment.model';
 import { Observable } from 'rxjs';
+import { API_BASE_URL } from '../api-url.token';
 @Injectable({
   providedIn: 'root',
 })
 export class CommentService {
   private readonly http = inject(HttpClient);
-  private apiUrl = 'https://jsonplaceholder.typicode.com';
+  private apiUrl: string = inject(API_BASE_URL);
 
   getComments(): Observable<CommentModel[]> {
     console.log('${this.apiUrl}/comments');
